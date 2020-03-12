@@ -4,9 +4,32 @@ const dateElement = document.getElementById("date");
 const list = document.getElementById("list");
 const input = document.getElementById("input");
 
+// Variables
+let LIST, id;
+
+// Local Storage
+function loadList(array) {
+    array.forEach(function (item) {
+        ToDoFunc(item.name, item.id, item.done, item.trash);
+    });
+}
+
+
+let data = localStorage.getItem("TODO");
+if(data) {
+    LIST = JSON.parse(data);
+    id = LIST.length;
+    loadList(LIST);
+} else {
+    LIST = [];
+    id = 0;
+};
+
+
+
 // Classes names
-const CHECK = "fas fa-poo";
-const UNCHECK = "fas fa-poop";
+const CHECK = "fa-poo";
+const UNCHECK = "fa-poop";
 const LINE_THROUGH = "lineThrough";
 
 // Show todays date
@@ -16,17 +39,25 @@ const today = new Date();
 dateElement.innerHTML = today.toLocaleDateString('en-US', options);
 
 // ToDo Func
-function ToDoFunc(ToDo) {
-    let text = `
+function ToDoFunc(ToDo, id, done, trash) {
+    if(trash) {
+        return;
+    };
+
+    const DONE = done ? CHECK : UNCHECK;
+    const LINE = done ? LINE_THROUGH : '';
+
+
+    let item = `
                     <li class="item">
-                        <i class="fas fa-poop" job="complete" id="0"></i>
-                        <p class="text">${ToDo}</p>
-                        <i class="fas fa-toilet" job="delete" id="0"></i>
+                        <i class="fas ${DONE}" job="complete" id="${id}"></i>
+                        <p class="text ${LINE}">${ToDo}</p>
+                        <i class="fas fa-toilet" job="delete" id="${id}"></i>
                     </li> 
                 `; 
 
 
-    list.insertAdjacentHTML('beforeend', text);
+    list.insertAdjacentHTML('beforeend', item);
 }
 
 // add item to the list
@@ -35,8 +66,46 @@ document.addEventListener('keyup', (e) => {
         const ToDo = input.value;
 
         if(ToDo) {
-            ToDoFunc(ToDo);
+            ToDoFunc(ToDo, id, false, false);
+
+            LIST.push({
+                name: ToDo,
+                id: id,
+                done: false,
+                trash: false
+            });
+
+            localStorage.setItem("TODO", JSON.stringify(LIST));
+
+            id++;
         }
         input.value = '';
     }
+})
+
+function completeToDo(el) {
+    el.classList.toggle(CHECK);
+    el.classList.toggle(UNCHECK);
+    el.parentNode.querySelector('.text').classList.toggle(LINE_THROUGH);
+    
+    LIST[el.id].done = LIST[el.id].done ? false : true;
+}
+
+function removeToDo(el) {
+    el.parentNode.parentNode.removeChild(el.parentNode);
+
+    LIST[el.id].trash = true;
+}
+
+list.addEventListener('click', (event) => {
+    const el = event.target;
+    const elementJob = el.attributes.job.value;
+
+    if(elementJob == 'complete'){
+        completeToDo(el);
+    } else if(elementJob == "delete") {
+        removeToDo(el);
+    }
+
+    localStorage.setItem("TODO", JSON.stringify(LIST));
 })
