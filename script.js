@@ -1,21 +1,23 @@
 // Select all Elements
-const clear = document.querySelector("clear");
+const clear = document.querySelector(".clear");
 const dateElement = document.getElementById("date");
 const list = document.getElementById("list");
 const input = document.getElementById("input");
 
+
+// Classes names
+const CHECK = "fa-poo";
+const UNCHECK = "fa-poop";
+const LINE_THROUGH = "lineThrough";
 // Variables
 let LIST, id;
 
 // Local Storage
-function loadList(array) {
-    array.forEach(function (item) {
-        ToDoFunc(item.name, item.id, item.done, item.trash);
-    });
-}
+
 
 
 let data = localStorage.getItem("TODO");
+
 if(data) {
     LIST = JSON.parse(data);
     id = LIST.length;
@@ -25,12 +27,21 @@ if(data) {
     id = 0;
 };
 
+function loadList(array) {
+    array.forEach(function (item) {
+        ToDoFunc(item.name, item.id, item.done, item.trash);
+    });
+}
+
+// clear event
+clear.addEventListener('click', function(){
+    localStorage.clear();
+    location.reload();
+}); 
 
 
-// Classes names
-const CHECK = "fa-poo";
-const UNCHECK = "fa-poop";
-const LINE_THROUGH = "lineThrough";
+
+
 
 // Show todays date
 const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
