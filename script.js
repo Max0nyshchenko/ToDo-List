@@ -3,6 +3,7 @@ const clear = document.querySelector(".clear");
 const dateElement = document.getElementById("date");
 const list = document.getElementById("list");
 const input = document.getElementById("input");
+const toiletPaper = document.getElementById('toiletPaper');
 
 
 // Classes names
@@ -92,6 +93,27 @@ document.addEventListener('keyup', (e) => {
         }
         input.value = '';
     }
+})
+
+toiletPaper.addEventListener('click', () => {
+    const ToDo = input.value;
+
+    if (ToDo) {
+        ToDoFunc(ToDo, id, false, false);
+
+        LIST.push({
+            name: ToDo,
+            id: id,
+            done: false,
+            trash: false
+        });
+
+        localStorage.setItem("TODO", JSON.stringify(LIST));
+
+        id++;
+    }
+    input.value = '';
+    
 })
 
 function completeToDo(el) {
