@@ -95,6 +95,17 @@ document.addEventListener('keyup', (e) => {
     }
 })
 
+document.addEventListener('keydown', (d) => {
+    if(d.keyCode == 13) {
+        toiletPaper.style.transform = 'scale(0.9, 0.9)';
+    }        
+});
+document.addEventListener('keyup', (e) => {
+    if(e.keyCode == 13) {
+        toiletPaper.style.transform = 'scale(1, 1)';
+    }
+})
+
 toiletPaper.addEventListener('click', () => {
     const ToDo = input.value;
 

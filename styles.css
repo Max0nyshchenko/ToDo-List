@@ -52,7 +52,7 @@ body {
 }
 
 .clear:hover {
-    color: rgb(255, 174, 52);
+    color: rgb(145, 195, 197);
     transition: 0.1s;
 }
 
@@ -78,6 +78,10 @@ body {
 .add-to-do > i:hover {
     color: rgb(39, 39, 39);
     transition: 0.1s;
+}
+
+#toiletPaper:active {
+    transform: scale(0.9, 0.9);
 }
 
 .add-to-do > input {
