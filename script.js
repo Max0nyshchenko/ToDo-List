@@ -153,3 +153,4 @@ list.addEventListener('click', (event) => {
 
     localStorage.setItem("TODO", JSON.stringify(LIST));
 })
+
