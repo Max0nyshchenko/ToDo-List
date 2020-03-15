@@ -126,6 +126,10 @@ li.item > i {
     justify-self: center;
 }
 
+li > i:hover {
+        text-shadow: 0 0 2vw rgb(255, 255, 255);
+}
+
 li > i[class*="fa-poo"]:hover {
     color: rgb(85, 54, 24);
 }
@@ -149,5 +153,16 @@ li > i[class*="fa-toilet"]:hover {
 .text {
     background-color: rgba(117, 106, 80, 0.308);
     margin-bottom: 0.3vw;
+    border: 0.5vw solid transparent;
+    border-image: url(img/border.jpg) 70 round;
+}
+
+.text > p {
+    margin: 0;
+    padding: 0;
+}
+
+.text:hover {
+    background-color: thistle;
 }
 
