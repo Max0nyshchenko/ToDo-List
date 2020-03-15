@@ -13,6 +13,7 @@ body {
 
 .container {
     height: 100%;
+    background-color: rgb(117, 106, 80);
 }
 
 /* HEADER */
@@ -23,9 +24,10 @@ body {
     background-image: url(img/showcase.jpg);
     background-position: center;
     background-size: cover;
+    /* background-attachment: local; */
     height: 20vw;
     color: aliceblue;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 900;
     overflow: hidden;
 }
@@ -87,14 +89,25 @@ body {
 /* Content */
 .content {
     background-image: url(img/pen.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     width: 100%;
     height: calc(100% - 20vw);
+    border: 0.777vw solid rgb(117, 106, 80);
+    border-radius: 2vw;
+    overflow: hidden;
 }
 
 #list {
     margin: 0;
     padding: 1vw;
     list-style: none;
+    font-weight: 600;
+    /* font-size: 0.88rem; */
+    /* border: 2px solid black;*/
+    /*border-radius: 50%; */
 }
 
 li > p {
@@ -104,7 +117,7 @@ li > p {
 
 li {
     display: grid;
-    grid-template-columns: 1fr 20fr 1fr;
+    grid-template-columns: 1fr 20fr 1fr;  
 }
 
 li.item > i {
@@ -128,3 +141,13 @@ li > i[class*="fa-toilet"] {
 li > i[class*="fa-toilet"]:hover {
     color: rgb(87, 87, 87);
 }
+
+.lineThrough {
+    text-decoration: line-through;
+}
+
+.text {
+    background-color: rgba(117, 106, 80, 0.308);
+    margin-bottom: 0.3vw;
+}
+
