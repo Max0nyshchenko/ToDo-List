@@ -141,6 +141,11 @@ li.item > i {
 
 li > i:hover {
         text-shadow: 0 0 2vw rgb(255, 255, 255);
+        transform: scale(1.1, 1.1);
+}
+
+li > i:active {
+    transform: scale(0.9, 0.9);
 }
 
 li > i[class*="fa-poo"]:hover {
