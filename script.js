@@ -166,6 +166,6 @@ function bgFunc() {
 
 $('.header').mousemove(function(e) {
     let moveX = (e.pageX * -1 / 15);
-    let moveY = (e.pageY * -1 / 1);
+    let moveY = (e.pageY * -1 / 1.5);
     $(this).css('background-position', moveX + 'px ' + moveY + 'px');
 })
