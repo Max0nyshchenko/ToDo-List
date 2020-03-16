@@ -4,6 +4,7 @@ const dateElement = document.getElementById("date");
 const list = document.getElementById("list");
 const input = document.getElementById("input");
 const toiletPaper = document.getElementById('toiletPaper');
+const h = window.innerHeight;
 
 
 // Classes names
@@ -153,3 +154,13 @@ list.addEventListener('click', (event) => {
 
     localStorage.setItem("TODO", JSON.stringify(LIST));
 })
+
+
+// Background function
+
+function bgFunc() {
+    const contentH = document.querySelector('.content');
+    let thisHeight = h * 0.8;
+    contentH.style.height = `${h}px`;
+}
+
