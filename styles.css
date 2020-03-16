@@ -105,6 +105,11 @@ body {
     border: 0.777vw solid rgb(117, 106, 80);
     border-radius: 2vw;
     overflow: auto;
+    position: absolute;
+    bottom: 0;
+    top: 20vw;
+    left: 0;
+    right: 0;
 }
 
 #spacer {
