@@ -175,8 +175,8 @@ li > i[class*="fa-toilet"]:hover {
 
 .text {
     background-color: rgba(117, 106, 80, 0.308);
-    margin-bottom: 0.3vw;
-    border: 0.5vw solid transparent;
+    margin-bottom: 3px;
+    border: 5px solid transparent;
     border-image: url(img/border.jpg) 70 round;
 }
 
